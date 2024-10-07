@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Usuario en Evento</title>
+</head>
+<body>
+    <h1>Registrar Usuario en Evento</h1>
+    
+    <h2>Eventos Disponibles</h2>
+    <ul>
+        {% for evento in eventos %}
+            <li>
+                <strong>{{ evento.nombre }}</strong> - {{ evento.descripcion }} 
+                <h3>Registrar Usuarios</h3>
+                <ul>
+                    {% for usuario in usuarios %}
+                        <li>
+                            {{ usuario.username }}
+                            <a href="{% url 'registrar_usuario' evento.pk usuario.pk %}">Registrar</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
